@@ -11,7 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('enrolled_course', function (Blueprint $table) {
+            $table->increments('id');
+            $table->foreignId('user_id');
+            $table->foreignId('course_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('enrolled_course');
     }
 };
